@@ -19,5 +19,6 @@ from api import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
-    path('chat/<str:room_name>/',views.room,name="room")
+    path('chat/<str:room_name>/',views.room,name="room"),
+    path('upload/',views.upload,name="upload")
 ]

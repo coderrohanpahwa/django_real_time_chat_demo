@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>Chat Room</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
 </head>
 <body>
     <textarea id="chat-log" cols="100" rows="20"></textarea><br>
@@ -37,12 +38,19 @@
         };
 
         document.querySelector('#chat-message-submit').onclick = function(e) {
+            
+           
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
                 'message': message
             }));
             messageInputDom.value = '';
+            console.log(message)
+            axios.post('/upload/',data={msg:message}).then(res=>{
+                console.log(res);
+
+            })
         };
     </script>
 </body>
